@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Air Quality Predictor</title>
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        
+        #form-container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        
+        h1 {
+            margin-top: 0;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        input {
+            margin-bottom: 15px;
+            padding: 10px;
+            width: 100%;
+            max-width: 300px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        button {
+            padding: 10px 30px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        
+        #result-container {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: #fff;
+        }
+
+        
+        #prediction {
+            font-weight: bold;
+            color: #ffdd57;
+        }
+    </style>
+</head>
+<body>
+    <h1>Air Quality Predictor</h1>
+    <div id="form-container">
+        <form action="/" id="air-quality-form" method="post">
+            <label for="temperature">Temperature:</label>
+            <input type="number" id="temperature" name="temperature" required>
+            <label for="humidity">Humidity:</label>
+            <input type="number" id="humidity" name="humidity" required>
+            <label for="wind-speed">Wind Speed:</label>
+            <input type="number" id="wind-speed" name="wind-speed" required>
+            <label for="pollutant-emissions">Pollutant Emissions:</label>
+            <input type="number" id="pollutant-emissions" name="pollutant-emissions" step="0.01" required>
+            <button type="submit">Predict</button>
+        </form>
+        
+        <div id="result-container">
+            {% if prediction %}
+            <p>Air Quality: <span id="prediction">{{ prediction }}</span></p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
